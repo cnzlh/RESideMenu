@@ -274,6 +274,7 @@
     if (!self.leftMenuViewController) {
         return;
     }
+    [[UIApplication sharedApplication] setStatusBarStyle:self.menuPreferredStatusBarStyle];
     self.leftMenuViewController.view.hidden = NO;
     self.rightMenuViewController.view.hidden = YES;
     [self.view.window endEditing:YES];
@@ -421,6 +422,7 @@
         animationBlock();
         completionBlock();
     }
+    [[UIApplication sharedApplication] setStatusBarStyle:self.contentViewController.preferredStatusBarStyle];
     [self statusBarNeedsAppearanceUpdate];
 }
 
