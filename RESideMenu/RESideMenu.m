@@ -422,7 +422,7 @@
         animationBlock();
         completionBlock();
     }
-    [[UIApplication sharedApplication] setStatusBarStyle:self.contentViewController.preferredStatusBarStyle];
+    [[UIApplication sharedApplication] setStatusBarStyle:self.contentViewController.preferredStatusBarStyle]; 
     [self statusBarNeedsAppearanceUpdate];
 }
 
@@ -521,6 +521,10 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
+    UIView *touchView = touch.view;
+    if ([touchView isKindOfClass:[UISlider class]]) {
+        return NO;
+    }
     IF_IOS7_OR_GREATER(
        if (self.interactivePopGestureRecognizerEnabled && [self.contentViewController isKindOfClass:[UINavigationController class]]) {
            UINavigationController *navigationController = (UINavigationController *)self.contentViewController;
